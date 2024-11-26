@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="/styles.css">
+
+<div class="dashboard-container">
+    <h1>Feedback</h1>
+    <p>Welcome, <%= user.email %>!</p>
+    <a href="/feedback">Submit Feedback</a>
+    <h2>Your Feedbacks</h2>
+    <ul class="feedback-list">
+        <% feedbacks.forEach(feedback => { %>
+            <li><%= feedback.feedback %></li>
+        <% }); %>
+    </ul>
+    <a href="/logout" class="logout-link">Logout</a>
+</div>

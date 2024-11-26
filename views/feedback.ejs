@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="/styles.css">
+
+<div class="feedback-container">
+    <h1>Feedback</h1>
+
+    <div class="button-group">
+        <button id="add-feedback-button" onclick="toggleFeedbackForm()">Add Feedback</button>
+        <button id="edit-feedback-button" style="display: none;" onclick="toggleEditForm()">Edit Feedback</button>
+    </div>
+
+    <!-- Add Feedback Form -->
+    <form id="feedback-form" action="/feedback" method="POST" style="display: none;">
+        <textarea name="feedback" id="feedback-text" placeholder="Enter your feedback..." required></textarea>
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+    <!-- Feedback List -->
+    <h2>Your Feedbacks</h2>
+    <ul id="feedback-list">
+        <% feedbacks.forEach((item) => { %>
+        <li>
+            <span><%= item.content %></span>
+            <button onclick="prepareEditForm('<%= item._id %>', '<%= item.content %>')">Edit</button>
+        </li>
+        <% }); %>
+    </ul>
+
+    <!-- Edit Feedback Form -->
+    <form id="edit-feedback-form" action="/edit-feedback" method="POST" style="display: none;">
+        <input type="visible" name="id" id="edit-feedback-id">
+        <textarea name="feedback" id="edit-feedback-text" required></textarea>
+        <button type="submit">Update Feedback</button>
+    </form>
+
+    <a href="/admin" class="back-link">Go to Admin Dashboard</a>
+</div>
+
+<script src="/js/feedback.js"></script>
+
+
+
+

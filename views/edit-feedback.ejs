@@ -1,0 +1,8 @@
+<div class="feedback-container">
+    <h1>Edit Feedback</h1>
+    <form action="/admin/edit/<%= feedback._id %>" method="POST">
+        <textarea name="feedback" required><%= feedback.feedback %></textarea>
+        <button type="submit">Save Changes</button>
+    </form>
+    <a href="/admin" class="back-link">Go to Admin Dashboard</a>
+</div>

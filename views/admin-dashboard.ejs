@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="/styles.css">
+<div class="dashboard-container">
+    <h1>Admin Dashboard</h1>
+    <h2>All Feedbacks</h2>
+    <table class="feedback-table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Feedback</th>
+                <th>Submitted Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% feedbacks.forEach(feedback => { %>
+                <tr>
+                    <td><%= feedback.userId ? feedback.userId.email : 'Unknown User' %></td>
+                    <td><%= feedback.feedback %></td>
+                    <td><%= feedback.createdAt ? feedback.createdAt.toDateString() : 'Unknown Date' %></td>
+                    <td>
+                        <td>
+                            <a href="/admin/edit/<%= feedback._id %>" class="edit-link" style="display:flex;">Edit</a>
+                        </td>
+                        <td>
+                            <form action="/admin/delete/<%= feedback._id %>" method="POST" style="display:inline;">
+                            <button type="submit" class="delete-button">Delete</button>
+                            </form>
+                        </td>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>
+
